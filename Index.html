@@ -461,4 +461,1040 @@ input[type=range]::-webkit-slider-thumb{
 }
 .about-hero h2{
   font-size:21px;font-weight:900;letter-spacing:.02em;
-  backgr
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.about-hero .ver{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:7px;}
+.about-hero .by{
+  margin-top:16px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);font-weight:800;
+}
+.about-hero .by b{color:var(--accent2);}
+.about-desc{
+  font-size:13px;line-height:1.75;color:var(--muted);text-align:center;
+  margin:0 auto 22px;max-width:340px;
+}
+.feat{display:grid;gap:10px;margin-bottom:22px;}
+.feat-item{
+  display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border-radius:15px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  animation:cardIn .5s var(--ease) both;animation-delay:calc(var(--i)*70ms);
+}
+.feat-item .fi{
+  width:32px;height:32px;border-radius:10px;flex-shrink:0;display:grid;place-items:center;
+  background:rgba(var(--accentRGB),.14);font-size:15px;
+}
+.feat-item h4{font-size:12.5px;font-weight:800;margin-bottom:3px;}
+.feat-item p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+.credit{
+  text-align:center;font-size:10.5px;color:rgba(255,255,255,.22);
+  letter-spacing:.14em;text-transform:uppercase;padding:16px 0 6px;
+}
+
+/* ============ ALARM ============ */
+#alarm{
+  position:fixed;inset:0;z-index:500;display:none;
+  align-items:center;justify-content:center;padding:24px;
+  background:rgba(0,0,0,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+#alarm.on{display:flex;animation:fadeIn .3s var(--ease);}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.alarm-card{
+  width:100%;max-width:360px;padding:30px 24px 24px;border-radius:28px;text-align:center;
+  background:var(--bg2);border:1px solid var(--cardBrd);
+  box-shadow:0 0 70px rgba(var(--accentRGB),.35);
+  animation:alarmIn .55s var(--spring);
+}
+@keyframes alarmIn{from{transform:scale(.7) translateY(40px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.alarm-ico{
+  width:76px;height:76px;margin:0 auto 20px;border-radius:26px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:grid;place-items:center;font-size:34px;
+  animation:bellShake .6s ease-in-out infinite;
+  box-shadow:0 0 44px rgba(var(--accentRGB),.65);
+}
+@keyframes bellShake{0%,100%{transform:rotate(0deg) scale(1);}25%{transform:rotate(-13deg) scale(1.07);}75%{transform:rotate(13deg) scale(1.07);}}
+.alarm-card h3{font-size:19px;font-weight:900;margin-bottom:8px;line-height:1.35;word-break:break-word;}
+.alarm-card p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:6px;word-break:break-word;}
+.alarm-time{
+  display:inline-block;margin-top:10px;padding:6px 14px;border-radius:10px;
+  background:rgba(var(--accentRGB),.12);color:var(--accent);
+  font-size:11px;font-weight:800;letter-spacing:.08em;
+}
+.alarm-btns{display:flex;gap:10px;margin-top:24px;}
+.alarm-btns button{
+  flex:1;padding:15px 8px;border-radius:16px;font-size:12.5px;font-weight:900;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:transform .25s var(--spring);
+}
+.alarm-btns button:active{transform:scale(.94);}
+.a-done{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#05050c;box-shadow:0 8px 26px rgba(var(--accentRGB),.4);}
+.a-snooze{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:var(--text);}
+
+/* ============ CONFETTI / TOAST ============ */
+.confetti{
+  position:fixed;width:9px;height:9px;border-radius:2px;pointer-events:none;z-index:900;
+  animation:conf .85s cubic-bezier(.15,.6,.4,1) forwards;
+}
+@keyframes conf{
+  0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1;}
+  100%{transform:translate(var(--tx),var(--ty)) rotate(420deg) scale(.15);opacity:0;}
+}
+#toast{
+  position:fixed;left:50%;bottom:calc(108px + env(safe-area-inset-bottom));
+  transform:translate(-50%,26px);z-index:600;pointer-events:none;
+  padding:13px 22px;border-radius:16px;max-width:88vw;
+  background:rgba(20,20,32,.96);border:1px solid var(--cardBrd);
+  color:var(--text);font-size:12.5px;font-weight:700;text-align:center;
+  opacity:0;transition:all .4s var(--spring);
+  box-shadow:0 14px 40px rgba(0,0,0,.6);
+  backdrop-filter:blur(12px);
+}
+#toast.show{opacity:1;transform:translate(-50%,0);}
+
+/* ============ RIPPLE ============ */
+.ripple{
+  position:fixed;border-radius:50%;pointer-events:none;z-index:800;
+  background:radial-gradient(circle,rgba(var(--accentRGB),.55),transparent 70%);
+  transform:translate(-50%,-50%) scale(0);
+  animation:rip .65s var(--ease) forwards;
+}
+@keyframes rip{to{transform:translate(-50%,-50%) scale(1);opacity:0;}}
+
+.safe-bottom{height:env(safe-area-inset-bottom);}
+</style>
+</head>
+<body data-theme="cyber">
+
+<!-- ================= SPLASH ================= -->
+<div id="splash">
+  <div class="splash-mark">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="core"></div>
+  </div>
+  <div class="splash-title">Nexus</div>
+  <div class="splash-sub">Remind · Reimagined</div>
+  <div class="splash-bar"><i></i></div>
+  <div class="splash-brand">A Product of Creative Future</div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="orbs">
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div class="orb c"></div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="brand-logo">◈</div>
+    <div class="brand-txt">
+      <h1>Nexus Remind</h1>
+      <p>Creative Future</p>
+    </div>
+    <button class="hbtn" id="btnSettings">⚙</button>
+  </header>
+
+  <div class="stats">
+    <div class="ring-wrap">
+      <svg viewBox="0 0 52 52">
+        <defs>
+          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="var(--accent)"/>
+            <stop offset="100%" stop-color="var(--accent2)"/>
+          </linearGradient>
+        </defs>
+        <circle class="ring-bg" cx="26" cy="26" r="20"/>
+        <circle class="ring-fg" id="ringFg" cx="26" cy="26" r="20"/>
+      </svg>
+      <span class="ring-pct" id="ringPct">0%</span>
+    </div>
+    <div class="stat-txt">
+      <h2 id="statTitle">Let's get started</h2>
+      <p id="statSub">No tasks yet — tap + to create one</p>
+    </div>
+    <div class="streak" id="streak">🔥 0</div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="chip active" data-f="all">All</button>
+    <button class="chip" data-f="today">Today</button>
+    <button class="chip" data-f="upcoming">Upcoming</button>
+    <button class="chip" data-f="done">Done</button>
+  </div>
+
+  <div id="taskList"></div>
+</div>
+
+<button id="fab">+</button>
+
+<!-- ================= TASK SHEET ================= -->
+<div class="sheet" id="taskSheet">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grabber"></div>
+    <h3 id="tsTitle">New Reminder</h3>
+
+    <div class="field">
+      <label>What should I remind you about?</label>
+      <input type="text" id="inTitle" placeholder="e.g. Call mom, Drink water…" maxlength="90" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label>Notes (optional)</label>
+      <textarea id="inNote" placeholder="Add a little detail…" maxlength="200"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Remind me at</label>
+      <input type="datetime-local" id="inDue">
+      <div class="quick">
+        <button class="qbtn" data-min="1">+1 min</button>
+        <button class="qbtn" data-min="5">+5 min</button>
+        <button class="qbtn" data-min="15">+15 min</button>
+        <button class="qbtn" data-min="60">+1 hour</button>
+        <button class="qbtn" data-min="1440">Tomorrow</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Priority</label>
+      <div class="pri-row">
+        <button class="pri-opt" data-p="1">HIGH</button>
+        <button class="pri-opt sel" data-p="2">MEDIUM</button>
+        <button class="pri-opt" data-p="3">LOW</button>
+      </div>
+    </div>
+
+    <button class="btn-main" id="btnSaveTask">Save Reminder</button>
+    <button class="btn-ghost" id="btnDeleteTask" style="display:none;">Delete Reminder</button>
+  </div>
+</div>
+
+<!-- ================= SETTINGS SHEET ================= -->
+<div class="sheet" id="setSheet">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grabber"></div>
+    <h3>Settings</h3>
+
+    <div class="field">
+      <label>Theme</label>
+      <div class="theme-grid" id="themeGrid"></div>
+    </div>
+
+    <div class="field">
+      <label>Notification Sound</label>
+      <div class="snd-row" id="sndRow"></div>
+    </div>
+
+    <div class="field">
+      <label>Volume · <span id="volTxt">70%</span></label>
+      <input type="range" id="volRange" min="0" max="100" value="70">
+    </div>
+
+    <div class="set-row">
+      <div>
+        <div class="lbl">System Notifications</div>
+        <div class="sub" id="notifSub">Allow alerts outside the app</div>
+      </div>
+      <div class="switch" id="swNotify"></div>
+    </div>
+
+    <div class="set-row">
+      <div>
+        <div class="lbl">Vibration</div>
+        <div class="sub">Haptic feedback on reminders</div>
+      </div>
+      <div class="switch" id="swVibrate"></div>
+    </div>
+
+    <button class="btn-main" id="btnTest" style="margin-top:18px;">🔔 Test Notification</button>
+    <button class="btn-ghost" id="btnAbout">About Nexus Remind</button>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="sheet" id="aboutSheet">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grabber"></div>
+    <div class="about-hero">
+      <div class="about-mark">◈</div>
+      <h2>Nexus Remind</h2>
+      <div class="ver">Version 1.0.0 · Build 2025</div>
+      <div class="by">A product of <b>Creative Future</b></div>
+    </div>
+
+    <p class="about-desc">
+      A beautifully crafted reminder engine built for people who move fast.
+      Zero clutter. Zero noise. Just pure focus wrapped in a little bit of magic.
+    </p>
+
+    <div class="feat">
+      <div class="feat-item" style="--i:0">
+        <div class="fi">🎨</div>
+        <div><h4>4 Signature Themes</h4><p>Neon Void, Sunset Blaze, Abyss Deep and Sakura Zen — switch instantly, forever free.</p></div>
+      </div>
+      <div class="feat-item" style="--i:1">
+        <div class="fi">🔔</div>
+        <div><h4>4 Synth Notification Sounds</h4><p>Hand-tuned tones generated live — no downloads, no lag, no compromise.</p></div>
+      </div>
+      <div class="feat-item" style="--i:2">
+        <div class="fi">⚡</div>
+        <div><h4>Instant Reminders</h4><p>Native Android notifications, vibration and full-screen alarm moments.</p></div>
+      </div>
+      <div class="feat-item" style="--i:3">
+        <div class="fi">🔥</div>
+        <div><h4>Momentum Engine</h4><p>Live progress ring and streak counter that make finishing tasks genuinely addictive.</p></div>
+      </div>
+      <div class="feat-item" style="--i:4">
+        <div class="fi">🔒</div>
+        <div><h4>100% Private</h4><p>Everything lives on your device. No account, no servers, no tracking. Ever.</p></div>
+      </div>
+    </div>
+
+    <div class="credit">Crafted with obsession · Creative Future</div>
+    <div class="safe-bottom"></div>
+  </div>
+</div>
+
+<!-- ================= ALARM ================= -->
+<div id="alarm">
+  <div class="alarm-card">
+    <div class="alarm-ico">🔔</div>
+    <h3 id="alarmTitle">Task</h3>
+    <p id="alarmNote"></p>
+    <div class="alarm-time" id="alarmTime"></div>
+    <div class="alarm-btns">
+      <button class="a-snooze" id="btnSnooze">Snooze 5m</button>
+      <button class="a-done" id="btnAlarmDone">Done ✓</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.prototype.slice.call(r.querySelectorAll(s));
+const pad = n => String(n).padStart(2,'0');
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+
+function lsGet(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
+function lsSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+function toLocalInput(ts){
+  const d = new Date(ts);
+  return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+'T'+pad(d.getHours())+':'+pad(d.getMinutes());
+}
+function fmtTime(ts){
+  return new Date(ts).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+}
+function relTime(ts){
+  const diff = ts - Date.now();
+  const abs = Math.abs(diff);
+  const m = Math.round(abs/60000);
+  const h = Math.round(abs/3600000);
+  const d = Math.round(abs/86400000);
+  let str;
+  if(abs < 60000) str = 'now';
+  else if(m < 60) str = m + 'm';
+  else if(h < 24) str = h + 'h';
+  else str = d + 'd';
+  if(str === 'now') return diff >= 0 ? 'now' : 'overdue';
+  return diff >= 0 ? 'in ' + str : str + ' ago';
+}
+function dayKey(ts){
+  const d = new Date(ts);
+  return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+}
+
+/* ============================================================
+   STATE
+============================================================ */
+const LS_TASKS = 'cf_nexus_tasks_v1';
+const LS_SET   = 'cf_nexus_settings_v1';
+const LS_META  = 'cf_nexus_meta_v1';
+
+const DEFAULT_SETTINGS = { theme:'cyber', sound:'ripple', volume:0.7, notify:true, vibrate:true };
+
+let settings = Object.assign({}, DEFAULT_SETTINGS, lsGet(LS_SET, {}));
+let tasks    = lsGet(LS_TASKS, []);
+let meta     = Object.assign({ firstRun:true, streak:0, lastDoneDay:'' }, lsGet(LS_META, {}));
+
+let currentFilter = 'all';
+let editingId = null;
+let pickedPriority = 2;
+
+function saveTasks(){ lsSet(LS_TASKS, tasks); }
+function saveSettings(){ lsSet(LS_SET, settings); }
+function saveMeta(){ lsSet(LS_META, meta); }
+
+/* ============================================================
+   AUDIO ENGINE (synthesized — no external files)
+============================================================ */
+let actx = null, master = null;
+
+function audioCtx(){
+  if(!actx){
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return null;
+    actx = new AC();
+    master = actx.createGain();
+    master.gain.value = settings.volume;
+    master.connect(actx.destination);
+  }
+  if(actx.state === 'suspended'){ actx.resume().catch(()=>{}); }
+  return actx;
+}
+function tone(o){
+  const ctx = audioCtx(); if(!ctx) return;
+  const freq = o.freq||440, delay = o.delay||0, dur = o.dur||0.2;
+  const type = o.type||'sine', vol = (o.vol==null?0.25:o.vol);
+  const t0 = ctx.currentTime + delay;
+  const osc = ctx.createOscillator();
+  const g   = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, t0);
+  if(o.to) osc.frequency.exponentialRampToValueAtTime(Math.max(1,o.to), t0 + dur);
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(Math.max(0.0002, vol), t0 + (o.attack||0.012));
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  osc.connect(g); g.connect(master);
+  osc.start(t0); osc.stop(t0 + dur + 0.06);
+}
+
+const SOUNDS = {
+  ripple: { name:'Ripple',  icon:'💧', play(){ tone({freq:880,dur:.18,type:'sine',vol:.32}); tone({freq:1320,delay:.11,dur:.30,type:'sine',vol:.22}); } },
+  chime:  { name:'Chime',   icon:'✨', play(){ [523.25,659.25,783.99,1046.5].forEach((f,i)=>tone({freq:f,delay:i*.10,dur:.55,type:'triangle',vol:.20})); } },
+  pulse:  { name:'Pulse',   icon:'⚡', play(){ for(let i=0;i<3;i++) tone({freq:440,delay:i*.15,dur:.10,type:'square',vol:.11,to:700}); } },
+  zen:    { name:'Zen',     icon:'🌊', play(){ tone({freq:196,dur:1.1,type:'sine',vol:.26,attack:.28}); tone({freq:293.66,delay:.14,dur:1.0,type:'sine',vol:.17,attack:.30}); tone({freq:392,delay:.30,dur:.9,type:'sine',vol:.11,attack:.36}); } }
+};
+function playSound(key){
+  const s = SOUNDS[key] || SOUNDS.ripple;
+  try{ s.play(); }catch(e){}
+}
+
+/* ============================================================
+   THEMES
+============================================================ */
+const THEMES = {
+  cyber:  { name:'Neon Void',    a:'#00e5ff', b:'#a855f7' },
+  sunset: { name:'Sunset Blaze', a:'#ff7a18', b:'#ff2e93' },
+  ocean:  { name:'Abyss Deep',   a:'#14e0c8', b:'#3b82f6' },
+  sakura: { name:'Sakura Zen',   a:'#ff5ea8', b:'#c084fc' }
+};
+
+function applyTheme(){
+  document.body.dataset.theme = settings.theme;
+  const m = document.querySelector('meta[name="theme-color"]');
+  if(m){
+    const bg = getComputedStyle(document.body).getPropertyValue('--bg').trim();
+    if(bg) m.setAttribute('content', bg);
+  }
+}
+
+/* ============================================================
+   SPLASH
+============================================================ */
+function bootSplash(){
+  setTimeout(()=>{
+    const sp = $('#splash');
+    sp.classList.add('hide');
+    $('#app').classList.add('on');
+    setTimeout(()=>{ sp.style.display = 'none'; }, 800);
+    setTimeout(()=>{ if(tasks.length) toast('Welcome back — you have ' + tasks.filter(t=>!t.done).length + ' open reminders'); }, 1400);
+  }, 2450);
+}
+
+/* ============================================================
+   RENDERING
+============================================================ */
+const listEl = $('#taskList');
+
+function sortedTasks(){
+  return tasks.slice().sort((a,b)=>{
+    if(a.done !== b.done) return a.done ? 1 : -1;
+    const ad = a.due || Infinity, bd = b.due || Infinity;
+    if(ad !== bd) return ad - bd;
+    return b.created - a.created;
+  });
+}
+function filteredTasks(){
+  const now = Date.now();
+  const todayKey = dayKey(now);
+  return sortedTasks().filter(t=>{
+    if(currentFilter === 'done')     return t.done;
+    if(currentFilter === 'today')    return !t.done && t.due && dayKey(t.due) === todayKey;
+    if(currentFilter === 'upcoming') return !t.done && t.due && t.due > now;
+    return !t.done || currentFilter === 'all';
+  });
+}
+
+function render(){
+  const list = filteredTasks();
+  const now = Date.now();
+
+  if(!list.length){
+    const msgs = {
+      all:      ['All clear ✦','Your mind is a quiet room. Tap the + button to plant your first reminder.'],
+      today:    ['Nothing due today','A perfectly open day. Enjoy it — or add something worth doing.'],
+      upcoming: ['No upcoming tasks','Future you is going to be very relaxed.'],
+      done:     ['No completed tasks yet','Check something off and watch the confetti fly.']
+    };
+    const m = msgs[currentFilter] || msgs.all;
+    listEl.innerHTML = '<div class="empty"><div class="empty-ico">'+(currentFilter==='done'?'🏆':'🌙')+'</div><h3>'+m[0]+'</h3><p>'+m[1]+'</p></div>';
+  } else {
+    listEl.innerHTML = list.map((t,i)=>{
+      const dueSoon = t.due && !t.done && (t.due - now) < 300000;
+      return '<div class="task p'+(t.priority||2)+(t.done?' done':'')+'" data-id="'+t.id+'" style="--i:'+i+'">'+
+        '<button class="check" data-act="check">✓</button>'+
+        '<div class="t-body" data-act="edit">'+
+          '<div class="t-title">'+esc(t.title)+'</div>'+
+          (t.note ? '<div class="t-note">'+esc(t.note)+'</div>' : '')+
+          '<div class="t-meta">'+
+            (t.due ? '<span class="due'+(dueSoon?' soon':'')+'" data-due="'+t.due+'">⏰ '+relTime(t.due)+' · '+fmtTime(t.due)+'</span>' : '<span class="due" style="opacity:.5">No time set</span>')+
+            '<span class="badge">'+({1:'High',2:'Medium',3:'Low'}[t.priority||2])+'</span>'+
+          '</div>'+
+        '</div>'+
+        '<button class="del" data-act="del">✕</button>'+
+      '</div>';
+    }).join('');
+  }
+  updateStats();
+}
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function updateStats(){
+  const total = tasks.length;
+  const done  = tasks.filter(t=>t.done).length;
+  const pct   = total ? Math.round(done/total*100) : 0;
+  const C = 125.6; // 2πr, r=20
+  const fg = $('#ringFg');
+  if(fg) fg.style.strokeDashoffset = (C * (1 - pct/100)).toFixed(1);
+  $('#ringPct').textContent = pct + '%';
+
+  const open = total - done;
+  const overdue = tasks.filter(t=>!t.done && t.due && t.due < Date.now()).length;
+
+  let title, sub;
+  if(total === 0){ title = "Let's get started"; sub = 'No tasks yet — tap + to create one'; }
+  else if(open === 0){ title = 'Everything done 🎉'; sub = 'You cleared the board. Legendary.'; }
+  else if(overdue > 0){ title = overdue + ' overdue'; sub = open + ' open · ' + done + ' completed'; }
+  else { title = open + ' reminder' + (open>1?'s':'') + ' ahead'; sub = done + ' of ' + total + ' completed today'; }
+
+  $('#statTitle').textContent = title;
+  $('#statSub').textContent = sub;
+  $('#streak').textContent = '🔥 ' + (meta.streak||0);
+}
+
+/* live countdown refresh */
+setInterval(()=>{
+  $$('[data-due]').forEach(el=>{
+    const ts = +el.dataset.due;
+    el.textContent = '⏰ ' + relTime(ts) + ' · ' + fmtTime(ts);
+    if(ts - Date.now() < 300000 && ts > Date.now()) el.classList.add('soon');
+    else el.classList.remove('soon');
+  });
+}, 10000);
+
+/* ============================================================
+   TASK ACTIONS
+============================================================ */
+listEl.addEventListener('click', (e)=>{
+  const card = e.target.closest('.task');
+  if(!card) return;
+  const id = card.dataset.id;
+  const act = e.target.closest('[data-act]');
+  const action = act ? act.dataset.act : null;
+
+  if(action === 'check'){ e.stopPropagation(); toggleTask(id, card, act); return; }
+  if(action === 'del'){ e.stopPropagation(); removeTask(id, card); return; }
+  if(action === 'edit'){ openTaskSheet(id); return; }
+});
+
+function toggleTask(id, card, btn){
+  const t = tasks.find(x=>x.id===id);
+  if(!t) return;
+  t.done = !t.done;
+  if(t.done){
+    t.doneAt = Date.now();
+    rippleAt(btn);
+    const r = btn.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + r.height/2);
+    haptic(18);
+    playSound('ripple');
+    bumpStreak();
+    toast(pick(['Nice one! ✦','Crushed it 🔥','That\'s momentum ⚡','One down ✓','Beautiful ✨']));
+  } else {
+    t.doneAt = 0;
+    haptic(10);
+  }
+  saveTasks();
+  card.classList.toggle('done', t.done);
+  setTimeout(()=>{ render(); }, 260);
+  updateStats();
+}
+
+function removeTask(id, card){
+  card.classList.add('leaving');
+  haptic(14);
+  setTimeout(()=>{
+    tasks = tasks.filter(t=>t.id!==id);
+    saveTasks(); render();
+    toast('Reminder deleted');
+  }, 340);
+}
+
+function bumpStreak(){
+  const today = dayKey(Date.now());
+  if(meta.lastDoneDay !== today){
+    const yesterday = dayKey(Date.now() - 86400000);
+    meta.streak = (meta.lastDoneDay === yesterday) ? (meta.streak||0) + 1 : 1;
+    meta.lastDoneDay = today;
+    saveMeta();
+  }
+}
+
+function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+/* ============================================================
+   TASK SHEET
+============================================================ */
+const taskSheet = $('#taskSheet');
+const inTitle = $('#inTitle'), inNote = $('#inNote'), inDue = $('#inDue');
+
+function openSheet(el){ el.classList.add('open'); }
+function closeSheet(el){ el.classList.remove('open'); }
+
+function openTaskSheet(id){
+  editingId = id || null;
+  const t = id ? tasks.find(x=>x.id===id) : null;
+  $('#tsTitle').textContent = t ? 'Edit Reminder' : 'New Reminder';
+  inTitle.value = t ? t.title : '';
+  inNote.value  = t ? (t.note||'') : '';
+  inDue.value   = t && t.due ? toLocalInput(t.due) : toLocalInput(Date.now() + 5*60000);
+  pickedPriority = t ? (t.priority||2) : 2;
+  $$('.pri-opt').forEach(b=>b.classList.toggle('sel', +b.dataset.p === pickedPriority));
+  $('#btnDeleteTask').style.display = t ? 'block' : 'none';
+  $('#btnSaveTask').textContent = t ? 'Update Reminder' : 'Save Reminder';
+  openSheet(taskSheet);
+  setTimeout(()=>{ if(!t) inTitle.focus(); }, 380);
+}
+
+$$('.pri-opt').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    pickedPriority = +b.dataset.p;
+    $$('.pri-opt').forEach(x=>x.classList.toggle('sel', x===b));
+    haptic(8);
+  });
+});
+
+$$('.qbtn').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const mins = +b.dataset.min;
+    inDue.value = toLocalInput(Date.now() + mins*60000);
+    haptic(8);
+    playSound('pulse');
+  });
+});
+
+$('#btnSaveTask').addEventListener('click', ()=>{
+  const title = inTitle.value.trim();
+  if(!title){ shake(inTitle); toast('Give your reminder a name first'); return; }
+
+  const dueTs = inDue.value ? new Date(inDue.value).getTime() : 0;
+
+  if(editingId){
+    const t = tasks.find(x=>x.id===editingId);
+    if(t){
+      t.title = title;
+      t.note = inNote.value.trim();
+      t.due = dueTs;
+      t.priority = pickedPriority;
+      t.fired = false; // re-arm
+    }
+    toast('Reminder updated ✓');
+  } else {
+    tasks.push({
+      id: uid(),
+      title: title,
+      note: inNote.value.trim(),
+      due: dueTs,
+      priority: pickedPriority,
+      done: false,
+      fired: false,
+      created: Date.now()
+    });
+    toast('Reminder set ✦');
+    if(settings.notify && 'Notification' in window && Notification.permission === 'default'){
+      Notification.requestPermission().catch(()=>{});
+    }
+  }
+  saveTasks();
+  closeSheet(taskSheet);
+  haptic(16);
+  playSound('chime');
+  render();
+});
+
+$('#btnDeleteTask').addEventListener('click', ()=>{
+  if(!editingId) return;
+  const card = listEl.querySelector('[data-id="'+editingId+'"]');
+  closeSheet(taskSheet);
+  if(card) removeTask(editingId, card);
+  else { tasks = tasks.filter(t=>t.id!==editingId); saveTasks(); render(); }
+});
+
+/* ============================================================
+   SETTINGS SHEET
+============================================================ */
+const setSheet = $('#setSheet');
+
+function buildSettingsUI(){
+  // themes
+  const tg = $('#themeGrid');
+  tg.innerHTML = Object.keys(THEMES).map(k=>{
+    const t = THEMES[k];
+    return '<button class="theme-card'+(settings.theme===k?' sel':'')+'" data-theme="'+k+'">'+
+      '<span class="tick">✓</span>'+
+      '<div class="theme-dots"><i style="background:'+t.a+'"></i><i style="background:'+t.b+'"></i></div>'+
+      '<span>'+t.name+'</span></button>';
+  }).join('');
+
+  // sounds
+  const sr = $('#sndRow');
+  sr.innerHTML = Object.keys(SOUNDS).map(k=>{
+    const s = SOUNDS[k];
+    return '<button class="snd'+(settings.sound===k?' sel':'')+'" data-snd="'+k+'"><em>'+s.icon+'</em>'+s.name+'</button>';
+  }).join('');
+
+  $('#volRange').value = Math.round(settings.volume*100);
+  $('#volTxt').textContent = Math.round(settings.volume*100)+'%';
+  $('#swNotify').classList.toggle('on', !!settings.notify);
+  $('#swVibrate').classList.toggle('on', !!settings.vibrate);
+  updateNotifSub();
+}
+
+function updateNotifSub(){
+  const sub = $('#notifSub');
+  if(!('Notification' in window)){ sub.textContent = 'Not supported on this browser'; return; }
+  const p = Notification.permission;
+  sub.textContent = p === 'granted' ? 'Permission granted ✓' : p === 'denied' ? 'Blocked — enable in browser settings' : 'Tap to allow alerts';
+}
+
+$('#themeGrid').addEventListener('click', (e)=>{
+  const card = e.target.closest('.theme-card'); if(!card) return;
+  settings.theme = card.dataset.theme;
+  saveSettings(); applyTheme(); buildSettingsUI();
+  haptic(12); playSound('pulse');
+  toast(THEMES[settings.theme].name + ' applied');
+});
+
+$('#sndRow').addEventListener('click', (e)=>{
+  const b = e.target.closest('.snd'); if(!b) return;
+  settings.sound = b.dataset.snd;
+  saveSettings(); buildSettingsUI();
+  playSound(settings.sound);
+  haptic(12);
+});
+
+$('#volRange').addEventListener('input', (e)=>{
+  settings.volume = e.target.value/100;
+  $('#volTxt').textContent = e.target.value + '%';
+  if(master) master.gain.value = settings.volume;
+  saveSettings();
+});
+$('#volRange').addEventListener('change', ()=>{ playSound(settings.sound); });
+
+$('#swNotify').addEventListener('click', async ()=>{
+  if(!settings.notify){
+    if('Notification' in window){
+      const p = await Notification.requestPermission().catch(()=>'denied');
+      if(p !== 'granted'){
+        toast('Notifications blocked by browser');
+        settings.notify = false;
+        saveSettings(); buildSettingsUI();
+        return;
+      }
+    }
+    settings.notify = true;
+  } else {
+    settings.notify = false;
+  }
+  saveSettings(); buildSettingsUI(); haptic(12);
+});
+
+$('#swVibrate').addEventListener('click', ()=>{
+  settings.vibrate = !settings.vibrate;
+  saveSettings(); buildSettingsUI();
+  if(settings.vibrate) haptic(20);
+});
+
+$('#btnTest').addEventListener('click', ()=>{
+  playSound(settings.sound);
+  haptic([120,60,120]);
+  if(settings.notify && 'Notification' in window && Notification.permission === 'granted'){
+    try{
+      new Notification('🔔 Nexus Remind', { body:'This is how your reminders will look.', tag:'cf-test' });
+    }catch(e){}
+  }
+  toast('Test alert sent ✦');
+});
+
+$('#btnAbout').addEventListener('click', ()=>{
+  closeSheet(setSheet);
+  setTimeout(()=>openSheet($('#aboutSheet')), 260);
+});
+
+$('#btnSettings').addEventListener('click', ()=>{
+  buildSettingsUI();
+  openSheet(setSheet);
+  haptic(10);
+});
+
+/* close handlers */
+$$('[data-close]').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    closeSheet(taskSheet); closeSheet(setSheet); closeSheet($('#aboutSheet'));
+  });
+});
+
+/* ============================================================
+   FAB + FILTERS
+============================================================ */
+$('#fab').addEventListener('click', (e)=>{
+  rippleAt(e.currentTarget);
+  haptic(14);
+  openTaskSheet(null);
+});
+
+$('#filters').addEventListener('click', (e)=>{
+  const c = e.target.closest('.chip'); if(!c) return;
+  currentFilter = c.dataset.f;
+  $$('.chip').forEach(x=>x.classList.toggle('active', x===c));
+  haptic(8);
+  render();
+});
+
+/* ============================================================
+   VISUAL FX
+============================================================ */
+function haptic(pattern){
+  if(!settings.vibrate) return;
+  if(navigator.vibrate){ try{ navigator.vibrate(pattern || 12); }catch(e){} }
+}
+function rippleAt(el){
+  const r = el.getBoundingClientRect();
+  const d = Math.max(r.width, r.height) * 2.4;
+  const div = document.createElement('div');
+  div.className = 'ripple';
+  div.style.width = d + 'px'; div.style.height = d + 'px';
+  div.style.left = (r.left + r.width/2) + 'px';
+  div.style.top  = (r.top + r.height/2) + 'px';
+  document.body.appendChild(div);
+  setTimeout(()=>div.remove(), 700);
+}
+function burst(x,y){
+  const cs = getComputedStyle(document.body);
+  const c1 = cs.getPropertyValue('--accent').trim() || '#00e5ff';
+  const c2 = cs.getPropertyValue('--accent2').trim() || '#a855f7';
+  const cols = [c1, c2, '#ffffff'];
+  for(let i=0;i<16;i++){
+    const d = document.createElement('div');
+    d.className = 'confetti';
+    d.style.left = x + 'px';
+    d.style.top  = y + 'px';
+    d.style.background = cols[i % 3];
+    const ang = Math.random()*Math.PI*2;
+    const dist = 40 + Math.random()*80;
+    d.style.setProperty('--tx', (Math.cos(ang)*dist).toFixed(1)+'px');
+    d.style.setProperty('--ty', (Math.sin(ang)*dist - 30).toFixed(1)+'px');
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(), 900);
+  }
+}
+let toastTimer = null;
+function toast(msg){
+  const el = $('#toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 2200);
+}
+function shake(el){
+  el.animate([
+    {transform:'translateX(0)'},{transform:'translateX(-9px)'},
+    {transform:'translateX(9px)'},{transform:'translateX(-6px)'},
+    {transform:'translateX(0)'}
+  ], {duration:340, easing:'ease-in-out'});
+  haptic([30,40,30]);
+}
+
+/* ============================================================
+   NOTIFICATION / REMINDER ENGINE
+============================================================ */
+const ICON = 'data:image/svg+xml,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' +
+  '<rect width="100" height="100" rx="24" fill="#06060c"/>' +
+  '<circle cx="50" cy="50" r="26" fill="none" stroke="#00e5ff" stroke-width="7"/>' +
+  '<circle cx="50" cy="50" r="9" fill="#a855f7"/></svg>'
+);
+
+function sysNotify(task){
+  if(!settings.notify) return;
+  if(!('Notification' in window) || Notification.permission !== 'granted') return;
+  try{
+    const n = new Notification('⏰ ' + task.title, {
+      body: task.note || 'Your reminder from Nexus Remind',
+      tag: 'cf-' + task.id,
+      icon: ICON,
+      badge: ICON,
+      vibrate: settings.vibrate ? [220,90,220,90,320] : undefined,
+      requireInteraction: true,
+      silent: false
+    });
+    n.onclick = function(){ try{ window.focus(); n.close(); }catch(e){} };
+  }catch(e){}
+}
+
+let alarmTask = null;
+let alarmTimers = [];
+
+function fireReminder(task){
+  sysNotify(task);
+  haptic([240,110,240,110,420]);
+
+  if(alarmTask) return; // already showing one
+  alarmTask = task;
+
+  $('#alarmTitle').textContent = task.title;
+  $('#alarmNote').textContent = task.note || '';
+  $('#alarmTime').textContent = '⏰ DUE ' + fmtTime(task.due || Date.now());
+  $('#alarm').classList.add('on');
+
+  // play the alert sound three times
+  playSound(settings.sound);
+  alarmTimers.push(setTimeout(()=>playSound(settings.sound), 1300));
+  alarmTimers.push(setTimeout(()=>playSound(settings.sound), 2600));
+}
+
+function closeAlarm(){
+  alarmTimers.forEach(clearTimeout);
+  alarmTimers = [];
+  $('#alarm').classList.remove('on');
+  alarmTask = null;
+}
+
+$('#btnAlarmDone').addEventListener('click', ()=>{
+  if(alarmTask){
+    const t = tasks.find(x=>x.id===alarmTask.id);
+    if(t){ t.done = true; t.doneAt = Date.now(); }
+    bumpStreak();
+    saveTasks(); render();
+    const r = $('#btnAlarmDone').getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + r.height/2);
+    playSound('ripple');
+    toast('Completed ✓ Nice work!');
+  }
+  haptic(16);
+  closeAlarm();
+});
+
+$('#btnSnooze').addEventListener('click', ()=>{
+  if(alarmTask){
+    const t = tasks.find(x=>x.id===alarmTask.id);
+    if(t){ t.due = Date.now() + 5*60000; t.fired = false; saveTasks(); render(); }
+    toast('Snoozed for 5 minutes');
+  }
+  haptic(12);
+  closeAlarm();
+});
+
+function checkReminders(){
+  const now = Date.now();
+  let changed = false;
+  tasks.forEach(t=>{
+    if(!t.done && t.due && !t.fired && t.due <= now){
+      t.fired = true;
+      changed = true;
+      fireReminder(t);
+    }
+  });
+  if(changed) saveTasks();
+}
+
+setInterval(checkReminders, 1000);
+document.addEventListener('visibilitychange', ()=>{
+  if(!document.hidden) checkReminders();
+});
+window.addEventListener('focus', checkReminders);
+
+/* ============================================================
+   SEED DATA (first run)
+============================================================ */
+function seed(){
+  if(meta.firstRun && tasks.length === 0){
+    const now = Date.now();
+    tasks = [
+      { id: uid(), title:'Explore Nexus Remind ✦', note:'Tap me to edit. Check the box to feel the magic.',
+        due: now + 2*60000, priority:2, done:false, fired:false, created: now },
+      { id: uid(), title:'Open Settings → try all 4 themes', note:'Each theme has its own personality.',
+        due: now + 30*60000, priority:1, done:false, fired:false, created: now-1 },
+      { id: uid(), title:'Drink a glass of water 💧', note:'',
+        due: now + 60*60000, priority:3, done:false, fired:false, created: now-2 }
+    ];
+    meta.firstRun = false;
+    saveTasks(); saveMeta();
+  }
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+function init(){
+  applyTheme();
+  seed();
+  render();
+  buildSettingsUI();
+  bootSplash();
+
+  // Unlock audio on first interaction (mobile requirement)
+  const unlock = ()=>{
+    audioCtx();
+    document.removeEventListener('touchstart', unlock);
+    document.removeEventListener('click', unlock);
+  };
+  document.addEventListener('touchstart', unlock, {passive:true});
+  document.addEventListener('click', unlock);
+
+  // Prevent double-tap zoom on Android
+  let lastTouch = 0;
+  document.addEventListener('touchend', (e)=>{
+    const now = Date.now();
+    if(now - lastTouch <= 300) e.preventDefault();
+    lastTouch = now;
+  }, {passive:false});
+
+  // Re-check reminders quickly after load
+  setTimeout(checkReminders, 1200);
+}
+
+init();
+
+})();
+</script>
+</body>
+</html>
